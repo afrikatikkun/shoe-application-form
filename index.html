@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Apply for Shoes</title>
+  <!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+    .form-container {
+      width: 95%;
+      max-width: 900px;
+      border: 2px solid #888;
+      border-radius: 10px;
+      padding: 30px 40px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    h1 { text-align: center; font-size: 2rem; margin-bottom: 30px; }
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-group { display: flex; flex-direction: column; }
+    .form-group input,
+    .form-group select {
+      padding: 12px 12px 12px 12px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      background-color: #fff;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23666" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14l-4.796-5.481C1.954 5.211 2.542 4 3.707 4h8.586c1.165 0 1.753 1.211 1.256 1.659l-4.796 5.481a1 1 0 0 1-1.51 0z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px 16px;
+      padding-right: 40px;
+    }
+    .form-group label {
+      margin-bottom: 8px; font-weight: bold;
+    }
+    .full-width { grid-column: 1 / -1; }
+    .file-input {
+      padding: 10px;
+      border: 2px dashed #ccc;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .form-check {
+      display: flex; align-items: center; gap: 10px; margin-top: 10px;
+    }
+    .form-check label { font-size: 0.95rem; }
+    .btn-group {
+      text-align: center; margin-top: 30px;
+    }
+    .step-btn {
+      background-color: #c8102e;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 8px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+    .step-btn:hover { background-color: #a00b24; }
+    .step-indicator {
+      display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;
+    }
+    .step-indicator div {
+      width: 12px; height: 12px; background: #ccc; border-radius: 50%;
+    }
+    .step-indicator .active { background: #c8102e; }
+    .grecaptcha-badge {
+      bottom: 10px !important;
+      right: 10px !important;
+    }
+
+    .flatpickr-input {
+        background-color: #fff;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 16px;
+        }
+
+  </style>
+</head>
+<body>
+<div class="form-container">
+  <h1>Application Form</h1>
+  <div class="step-indicator" id="stepIndicator">
+    <div class="active"></div><div></div><div></div>
+  </div>
+  <form id="multiStepForm">
+    <!-- STEP 1 -->
+    <div class="form-step active">
+      <div class="form-grid">
+        <div class="form-group"><label>Organization Name</label><input type="text" required></div>
+        <div class="form-group"><label>NPO Registration Number</label><input type="text" required></div>
+        <div class="form-group"><label>Date of Registration</label><input type="date" required></div>
+        <div class="form-group"><label>Registration Status</label><select required><option value="" disabled selected>Select</option><option>Active</option><option>Pending</option><option>Inactive</option></select></div>
+        <div class="form-group full-width"><label>Province</label><select required><option value="" disabled selected>Select</option><option>Gauteng</option><option>Free State</option><option>Eastern Cape</option><option>KwaZulu-Natal</option><option>Limpopo</option><option>Mpumalanga</option><option>Northern Cape</option><option>North West</option><option>Western Cape</option></select></div>
+      </div>
+    </div>
+    <!-- STEP 2 -->
+    <div class="form-step">
+      <div class="form-grid">
+        <div class="form-group"><label>Name</label><input type="text" required></div>
+        <div class="form-group"><label>Surname</label><input type="text" required></div>
+        <div class="form-group"><label>Email Address</label><input type="email" required></div>
+        <div class="form-group"><label>Contact Number</label><input type="tel" required></div>
+        <div class="form-group full-width"><label>Delivery Address Line 1</label><input type="text" required></div>
+        <div class="form-group full-width"><label>Delivery Address Line 2</label><input type="text"></div>
+        <div class="form-group"><label>City</label><input type="text" required></div>
+        <div class="form-group"><label>Postal Code</label><input type="text" required></div>
+        <div class="form-group full-width"><label>Province</label><select required><option value="" disabled selected>Select</option><option>Gauteng</option><option>Free State</option><option>Eastern Cape</option><option>KwaZulu-Natal</option><option>Limpopo</option><option>Mpumalanga</option><option>Northern Cape</option><option>North West</option><option>Western Cape</option></select></div>
+      </div>
+      <div class="form-group full-width" style="margin-top:20px;">
+        <label>Shoe Requirements (by Size & Gender)</label>
+        <div style="max-height:300px; overflow-y:auto; border:1px solid #ccc; border-radius:8px; padding:10px;">
+          <table style="width:100%; border-collapse:collapse;">
+            <thead><tr><th style="text-align:left;padding:8px;">Gender</th><th style="text-align:left;padding:8px;">Size</th><th style="text-align:left;padding:8px;">Quantity</th></tr></thead>
+            <tbody id="shoeTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- STEP 3 -->
+    <div class="form-step">
+      <div class="form-grid">
+        <div class="form-group full-width"><label>Upload NPO Certificate</label><input type="file" class="file-input" required></div>
+        <div class="form-group full-width"><label>Upload Proposal</label><input type="file" class="file-input" required></div>
+        <div class="form-group full-width"><label>Upload ID/Passport</label><input type="file" class="file-input" required></div>
+        <div class="form-group full-width"><label>Upload Signed Declaration</label><input type="file" class="file-input" required></div>
+        <div class="form-check full-width"><input type="checkbox" id="policy" required><label for="policy">I acknowledge the <a href="#" style="color:#f57200;">POPI Policy & Privacy Policy</a></label></div>
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="step-btn" id="prevBtn" onclick="nextPrev(-1)">Back</button>
+      <button type="button" class="step-btn" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </form>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6Lc6EV0rAAAAAC8thOVwagnJdDCBV2J47pDrXw4p"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+
+    flatpickr("input[type='date']", {
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+        maxDate: "today",
+        allowInput: true
+        });
+
+  const steps = document.querySelectorAll(".form-step");
+  const indicators = document.querySelectorAll(".step-indicator div");
+  let currentStep = 0;
+
+  function generateShoeMatrix() {
+    const tbl = document.getElementById("shoeTableBody");
+    for (let gender of ['Male','Female']) {
+      for (let size = 100; size <= 105; size++) {
+        let row = document.createElement('tr');
+        row.innerHTML = `<td style="padding:6px;">${gender}</td><td style="padding:6px;">${size}</td><td style="padding:6px;">
+          <input type="number" name="${gender}_${size}" min="0" value="0" style="width:80px;padding:6px;border:1px solid #ccc;border-radius:6px;">
+        </td>`;
+        tbl.appendChild(row);
+      }
+    }
+  }
+  generateShoeMatrix();
+
+  function showStep(n) {
+    steps.forEach((s,i)=> s.classList.toggle("active", i===n));
+    indicators.forEach((dot,i)=> dot.classList.toggle("active", i===n));
+    document.getElementById("prevBtn").style.display = n===0?'none':'inline-block';
+    const nextBtn = document.getElementById("nextBtn");
+    window.scrollTo({top:0,behavior:'smooth'});
+    if (n === steps.length-1) {
+      nextBtn.innerText = 'Submit';
+      nextBtn.onclick = submitWithRecaptcha;
+    } else {
+      nextBtn.innerText = 'Next';
+      nextBtn.onclick = () => nextPrev(1);
+    }
+  }
+
+  function nextPrev(n) {
+    if (n===1 && !validateStep()) return;
+    currentStep += n;
+    if (currentStep < steps.length) {
+      showStep(currentStep);
+    }
+  }
+
+  function validateStep() {
+    const inputs = steps[currentStep].querySelectorAll("input,select");
+    return Array.from(inputs).every(i => i.checkValidity());
+  }
+
+  function submitWithRecaptcha() {
+  const form = document.getElementById("multiStepForm");
+  const nextBtn = document.getElementById("nextBtn");
+
+  if (!form.checkValidity()) {
+    form.reportValidity(); // shows browser-native errors
+    return;
+  }
+
+  nextBtn.disabled = true;
+  nextBtn.innerText = "Submitting...";
+
+  grecaptcha.ready(() => {
+    grecaptcha.execute('6Lc6EV0rAAAAAC8thOVwagnJdDCBV2J47pDrXw4p', { action: 'submit' }).then(token => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'recaptcha_token';
+      input.value = token;
+      form.appendChild(input);
+      form.submit();
+    }).catch(() => {
+      alert("reCAPTCHA failed. Please try again.");
+      nextBtn.disabled = false;
+      nextBtn.innerText = "Submit";
+    });
+  });
+}
+
+
+  showStep(currentStep);
+</script>
+
+</body>
+</html>
